@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Foster Grant";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">Foster Grant</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The foster parent must be a South African citizen, permanent resident or refugee.</li>
+            <li>Both the applicant and the child must reside in South Africa.</li>
+            <li>Child must remain in the care of the foster parent(s).</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="FosterGrantForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

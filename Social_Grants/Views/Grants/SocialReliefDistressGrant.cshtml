@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Social Releif of Distress Grant";
+}
+<div class="container p-3 mt-4">
+    <div class="container">
+        <h2 class="text-primary">Social Relief of Distress Grant</h2>
+        <hr />
+    </div>
+    <div class="container mt-4">
+        <p>
+            Social relief of distress is a temporary provision of assistance intended for persons in such dire material need that they are unable to meet their
+            or their families' most basic needs.<br /><br />Social Relief of Distress is paid to South African citizens or permanent residents, who have insufficient
+            means and meet one or more of the following criteria:
+        </p>
+        <ul>
+            <li>The applicant is awaiting payment of an approved social grant.</li>
+            <li>The applicant has been found medically unfit to undertake remunerative work for a period of less than 6 months.</li>
+            <li>The bread winner is deceased and application is made within three months of the date of death.</li>
+            <li>No maintenance is received from parent, child or spouse obliged in law to pay maintenance, and proof is furnished that efforts made to obtain maintenance have been unsuccessful.</li>
+            <li>The bread winner of that person`s family has been admitted to an institution funded by the state (prison, psychiatric hospital, state home for older persons, treatment centre for substance abuse or child and youth care centre).</li>
+            <li>The applicant has been affected by a disaster as defines in the Disaster Management Act or the Fund Raising Act, 1978.</li>
+            <li>The person is not receiving assistance from any other organization or.</li>
+            <li>Refusal of the application for social relief of distress will cause undue hardships.</li>
+            <li>Period of Social Relief of Distress (New Policy)</li>
+        </ul>
+        <p>Social Relief of Distress is issued monthly for a maximum period of 3 months. An extension a further 3 months may be granted in exceptional cases.</p>
+        <p>
+            <strong class="text-danger">Note:</strong> No person who is in receipt of social grant may receive the grant and social relief of distress simultaneously. Any person who receive both social
+            relief and grant at the same time must repay the value of the social relief of distress received. This will be recovered from any social grant payment,
+            including an arrear payment. However, where the person who is in receipt of a social grant received social relief of distress as a result of a disaster,
+            that amount will not be recovered.
+        </p>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary me-2" asp-controller="Grants" asp-action="SocialReliefDistressGrantForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary" style="width:150px">Back</a>
+    </div>
+</div>

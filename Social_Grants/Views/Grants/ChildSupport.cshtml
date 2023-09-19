@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Child Support";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">Child Support</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The applicant must be a South African citizen, permanent resident or refugee.</li>
+            <li>The primary care giver must be a South African citizen, permanent resident or refugee.</li>
+            <li>Both the applicant and the child must reside in South Africa.</li>
+            <li>The applicant must be the primary care giver of the child/ children concerned.</li>
+            <li>The child/children must been born after 31 December 1993.</li>
+            <li>The applicant and spouse must meet the requirements of the means test.</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="ChildSupportForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

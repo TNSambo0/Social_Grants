@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Social_Grants.Models.Account
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item me-2 mb-1">
+            @{
+                var user = await UserManager.GetUserAsync(User);
+                var userFullName = new AppUser
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                };
+            }
+            <a class="btn btn-success btn-login" asp-action="Profile" asp-controller="Account" title="Manage" asp-route-Id="@user.Id">Hello @userFullName.FirstName @userFullName.LastName</a>
+        </li>
+        <li class="nav-item">
+            <a id="logout" asp-action="Logout" asp-controller="Account" type="button" class="btn btn-secondary btn-login">Logout</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-primary btn-login" id="login" asp-action="Login" asp-controller="Account">Login</a>
+        </li>
+    }
+</ul>
