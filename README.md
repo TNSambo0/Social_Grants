@@ -1,1 +1,3 @@
 # Social_Grants
+
+Social grants is an ASP.NET MVC project that allows one to apply for one of the provided social grants. For someone to apply they need to register first. Not only can you apply for a grant, but can also check your application status, choose a payment method if one of the grants you applied for is approved, which can be through a bank account or post office, If you choose to use a bank account, it should be registered under your name. If you choose a Post Office, a reference number will be provided which you will use together with your identity document to receive your money at the post office. You can update your personal details, change or update your payment method.
