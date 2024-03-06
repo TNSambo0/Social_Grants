@@ -1,0 +1,96 @@
+﻿@model Social_Grants.Models.Grant.GrantApplications
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="sub-title text-center">View Applicantion</h4>
+            </div>
+            <div class="card-block p-3">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold" asp-for="FullName"></label><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>@Model.FullName</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold" asp-for="AppUser.IDNumber"></label><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>@Model.AppUser.IDNumber</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold" asp-for="GrantName"></label><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>@Model.GrantName</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold" asp-for="Status"></label><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>@Model.Status</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="font-weight-bold" asp-for="DateCreated"></label><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <label>@Model.DateCreated</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+
+                                @foreach (var objQuestion in Model.Questions)
+                                {
+                                    @foreach (var objAnswer in Model.Answers)
+                                    {
+                                        if (objQuestion.Id == objAnswer.QuestionId)
+                                        {
+                                            <div class="col-md-6">
+                                                <label class="d-flex flex-column font-weight-bold">@objQuestion.Question</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="d-flex flex-column">@objAnswer.Answer</label>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @{
+                            var parms = new Dictionary<string, string>
+                        {
+                        { "Id" , $"{Model.Id}" },
+                        { "userID" , $"{Model.AppUserId}" }
+                        };
+                        }
+                        <a asp-action="Applications" asp-controller="Admin" class="btn btn-secondary">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

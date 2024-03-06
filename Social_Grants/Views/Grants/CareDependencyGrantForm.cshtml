@@ -1,0 +1,70 @@
+﻿@using Social_Grants.Models.Grant
+@model CareDependencyGrant
+@{
+    ViewData["Title"] = "Care dependency grant form";
+    Layout = "~/Views/Shared/_GrantsLayout.cshtml";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="card p-3">
+        <div class="card-body">
+            <h3 class="d-flex align-items-center mb-3 text-primary justify-content-center"><i class="material-icons text-info mr-2"></i>Care Dependency grant form</h3>
+            <hr />
+            <label class="dependents_count d-none">@Model.DependentsCount</label>
+            <div class="fs-5 mb-3 dependent_Create_router  d-none">
+                <label>You first need to create or provide dependent details before you can to apply for the grant. Click <a asp-controller="Dependent" asp-action="Create">here</a> to create one.</label>
+            </div>
+            <div class="dependent_details  d-none">
+                <h5 class="mb-3 text-decoration-underline">Dependent details</h5>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label class="text-danger error d-none"></label>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="DependentId"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select asp-for="DependentId" asp-items="Model.ListOfDependers" class="border-top-0 border-left-0 border-right-0 rounded-0">
+                            <option value="0">Select an option</option>
+                        </select>
+                    </div>
+                </div>
+                <h3 class="d-flex align-items-center mb-3 mt-3"><i class="material-icons text-info mr-2"></i>Answer the following questions</h3>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="CaredByState"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="CaredByState" />
+                        <span class="text-danger" asp-validation-for="CaredByState"></span>
+                    </div>
+                </div>
+                <h3 class="d-flex align-items-center mb-3 mt-3"><i class="material-icons text-info mr-2"></i>Upload the following supporting documents</h3>                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="MedicalReport"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="file" class="row m-0 border-0" asp-for="MedicalReport" multiple="false" accept="application/pdf" />
+                        <span class="text-danger row" asp-validation-for="MedicalReport"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="ApplicationForm"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="file" class="row m-0 border-0" asp-for="ApplicationForm" multiple="false" accept="application/pdf" />
+                        <span class="text-danger row" asp-validation-for="ApplicationForm"></span>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="offset-3 col-sm-9 text-end">
+                        <button id="BtnSubmit" type="submit" class="btn btn-primary" style="width:150px">Submit</button>
+                        <a asp-controller="Grants" asp-action="CareDependencyGrant" class="btn btn-secondary ms-2" style="width:150px">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

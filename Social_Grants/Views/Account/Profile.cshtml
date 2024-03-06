@@ -1,0 +1,141 @@
+﻿@using Social_Grants.Models.Account
+@model Profile
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<form method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="text-center mb-4 text-primary">Profile</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label class="text-danger error d-none"></label>
+            <div class="row align-items-center">
+                <div class="col-md-3 offset-9">
+                    <button type="submit" class="w-100 btn btn-primary btn-submit-profile">Save</button>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="FirstName"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="LastName"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="IDNumber"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0 @nameof(Profile.IDNumber)" asp-for="IDNumber" />
+                    <span asp-validation-for="IDNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="Email"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="PhoneNumber"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="GenderId"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <select asp-for="GenderId" class="border-top-0 border-left-0 border-right-0 rounded-0 w-100" asp-items="Model.GenderList">
+                        <option value="0">Select an option</option>
+                    </select>
+                    <span asp-validation-for="GenderId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="d-flex align-items-center mb-3 justify-content-center text-primary"><i class="material-icons text-info mr-2"></i>Residential Address</h6>
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <label asp-for="AddressLine1"></label>
+                </div>
+                <div class="col-sm-7 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="AddressLine1" />
+                    <span asp-validation-for="AddressLine1" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <label asp-for="AddressLine2"></label>
+                </div>
+                <div class="col-sm-7 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="AddressLine2" />
+                    <span asp-validation-for="AddressLine2" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <label asp-for="City"></label>
+                </div>
+                <div class="col-sm-7 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <label asp-for="Province"></label>
+                </div>
+                <div class="col-sm-7 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="Province" />
+                    <span asp-validation-for="Province" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-sm-5">
+                    <label asp-for="PostalCode"></label>
+                </div>
+                <div class="col-sm-7 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="PostalCode" />
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

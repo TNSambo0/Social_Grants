@@ -1,0 +1,64 @@
+﻿@using Social_Grants.Models.Grant
+@model IEnumerable<GrantApplications>
+@{
+    ViewData["Title"] = "Grant Applications";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="card mb-3">
+    <div class="card-body">
+        @if (ViewData["Applications"] == null)
+        {
+            <div class="fs-5 mb-3">
+                <label>The are no grant applications at the moment.</label>
+            </div>
+        }
+        else
+        {
+            <h3 class="text-center mb-4 text-primary">Grant applications</h3>
+            <hr />
+            <div class="my-2 d-flex">
+                <a asp-controller="Admin" asp-action="ApproveAll" class="btn btn-primary ml-auto">Approve All</a>
+            </div>
+            <table class="table table-hover shoppingCart-table">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().FullName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().GrantName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().Status)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().Reason)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().DateCreated)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().PayDate)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastOrDefault().MethodOfPayment)</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td class="product-name">@obj.FullName</td>
+                            <td>@obj.GrantName</td>
+                            <td>@obj.Status</td>
+                            <td>@obj.Reason</td>
+                            <td>@obj.DateCreated</td>
+                            <td>@obj.MethodOfPayment</td>
+                            <td>@obj.PayDate</td>
+                            <td>
+                                @{
+                                    var parms = new Dictionary<string, string>
+                        {
+                        { "id", $"{obj.Id}"},
+                        { "UserID", $"{obj.AppUserId}" }
+                        };
+                                }
+                                <a asp-controller="Admin" asp-action="ApplicationDetails" asp-all-route-data="@parms" class="btn btn-warning">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

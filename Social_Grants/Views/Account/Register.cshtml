@@ -1,0 +1,60 @@
+﻿@using Social_Grants.Models.Account
+@model Register
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                <form method="post" class="register-form" id="register-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label class="text-danger error d-none"></label>
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input asp-for="FirstName" type="text" id="name" placeholder="Your first name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input asp-for="LastName" type="text" id="name" placeholder="Your last name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="IDNumber"><i class="zmdi zmdi-IDNumber"></i></label>
+                        <input asp-for="IDNumber" type="text" class="@nameof(Register.IDNumber)" id="IDNumber" placeholder="Your IDNumber" />
+                        <span asp-validation-for="IDNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        <input asp-for="Email" type="email" id="email" placeholder="Your Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input asp-for="Password" type="password" id="pass" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input asp-for="ConfirmPassword" type="password" id="re_pass" placeholder="Repeat your password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="~/images/signup-image.jpg" alt="sign up image"></figure>
+                <a asp-action="Login" asp-controller="Account" class="signup-image-link">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,49 @@
+﻿@using Social_Grants.Models.Grant
+@model IEnumerable<GrantApplications>
+@{
+    ViewData["Title"] = "Check Status";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<div class="card mb-3">
+    <div class="card-body">
+        @if (ViewData["Applications"] == null)
+        {
+            <div class="fs-5 mb-3">
+                <label>You haven't applied for any grant. Click <a asp-controller="Home" asp-action="SocialGrants">here</a> to apply</label>
+            </div>
+        }
+        else
+        {
+            <h3 class="text-center mb-4 text-primary">Grant applications</h3><hr />
+            <table class="table table-bordered table-striped text-center" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.GrantName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Status)</th>
+                        <th>@Html.DisplayNameFor(model => model.PayDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.Reason)</th>
+                    </tr>
+                </thead>
+                <tboby>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.GrantName</td>
+                            <td>@obj.Status</td>
+                            <td>@obj.PayDate</td>
+                            <td>@obj.Reason</td>
+                        </tr>
+                    }
+                </tboby>
+            </table>
+            @if (ViewData["ShowPMBtn"] != null)
+            {
+                <div class="row mt-3">
+                    <div class="offset-3 col-sm-9 text-end">
+                        <a asp-action="PaymentMethod" asp-controller="Payment" class="btn btn-primary">Choose payment method</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

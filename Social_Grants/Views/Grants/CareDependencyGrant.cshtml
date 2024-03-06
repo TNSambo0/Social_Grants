@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Care Dependency Grant";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">Care Dependency Grant</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The applicant must be a South African citizen, permanent resident or refugee.</li>
+            <li>The applicant and child must be resident in South Africa.</li>
+            <li>Child must be under the age of 18 years.</li>
+            <li>The applicant must submit a medical / assessment report confirming permanent, severe disability.</li>
+            <li>The applicant and spouse must meet the requirements of the means test (except for foster parents.</li>
+            <li>The care-dependent child/children must not be permanently cared for in a State Institution.</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="CareDependencyGrantForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

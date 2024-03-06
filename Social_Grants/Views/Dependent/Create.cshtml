@@ -1,0 +1,70 @@
+﻿@model Dependent
+@{
+    ViewData["Title"] = "Child details";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="card mb-3 h-100">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Dependent details</h2>
+            <input type="hidden" asp-for="AppUserId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label class="text-danger error d-none"></label>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="FullName"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="FullName" />
+                    <span class="text-danger" asp-validation-for="FullName"></span>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="LastName"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="LastName" />
+                    <span class="text-danger" asp-validation-for="LastName"></span>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="IDNumber"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0 @nameof(Dependent.IDNumber)" asp-for="IDNumber" />
+                    <span class="text-danger" asp-validation-for="IDNumber"></span>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="Nationality"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="border-top-0 border-left-0 border-right-0 rounded-0" asp-for="Nationality" />
+                    <span class="text-danger" asp-validation-for="Nationality"></span>
+                </div>
+            </div>
+            <h3 class="d-flex align-items-center justify-content-center mb-3 mt-3"><i class="material-icons text-info mr-2"></i>Upload the following supporting documents</h3>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="IdentityDocument"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input type="file" asp-for="IdentityDocument" multiple="false" accept="application/pdf" />
+                    <span class="text-danger" asp-validation-for="IdentityDocument"></span>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="offset-3 col-sm-9 text-end">
+                    <button id="BtnSubmit" type="submit" class="btn btn-primary" style="width:150px">Submit</button>
+                    <a asp-controller="Dependent" asp-action="Index" class="btn btn-secondary ms-2" style="width:150px">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

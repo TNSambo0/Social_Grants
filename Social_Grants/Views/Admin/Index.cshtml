@@ -1,0 +1,115 @@
+﻿@model AdminDashboard
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content">
+    @if (ViewData["GrantApplications"] != null)
+            {
+        <div class="cards">
+            <div class="card">
+                <div class="box d-flex flex-column">
+                    <label class="h4 fw-bold" asp-for="ApprovedApplications"></label>
+                    <label class="h4 fw-bold text-center">@Model.ApprovedApplications</label>
+                </div>
+                @* <div class="icon-case">
+                <img src="/images/icons/products.png" alt="products" width="65px" height="65px">
+            </div> *@
+            </div>
+            <div class="card">
+                <div class="box d-flex flex-column">
+                    <label class="h4 fw-bold" asp-for="PendingApplications"></label>
+                    <label class="h4 fw-bold text-center">@Model.PendingApplications</label>
+                </div>
+                @* <div class="icon-case">
+                <img src="/images/icons/categories.png" alt="products" width="65px" height="65px">
+            </div> *@
+            </div>
+            <div class="card">
+                <div class="box d-flex flex-column">
+                    <label class="h4 fw-bold" asp-for="RejectedApplications"></label>
+                    <label class="h4 fw-bold text-center">@Model.RejectedApplications</label>
+                </div>
+                @* <div class="icon-case">
+                <img src="/images/icons/checkout.png" alt="orders" width="65px" height="65px">
+            </div> *@
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6 text-center">
+                <div class="d-none PieChart">
+                    <label asp-for="ApprovedApplications" data-value="@Model.ApprovedApplications"></label>
+                    <label asp-for="PendingApplications" data-value="@Model.PendingApplications"></label>
+                    <label asp-for="RejectedApplications" data-value="@Model.RejectedApplications"></label>
+                </div>
+                <label class="d-none TotalApps" asp-for="@Model.NumberOfApplications" value="@Model.NumberOfApplications"></label>
+                <canvas id="volunteersChart" width="250" height="250"></canvas>
+            </div>
+        </div>
+        <div>
+            <h3 class="text-center mb-4 text-primary">Grant applications</h3>
+            <hr />
+            <div class="my-2 d-flex">
+                <a asp-controller="Admin" asp-action="Applications" class="btn btn-primary ml-auto">View Applications</a>
+            </div>
+            <table class="table table-hover shoppingCart-table">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().FullName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().GrantName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().Status)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().Reason)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().DateCreated)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().PayDate)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Applications.LastOrDefault().MethodOfPayment)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model.Applications)
+                    {
+                        <tr>
+                            <td class="product-name">@obj.FullName</td>
+                            <td>@obj.GrantName</td>
+                            <td>@obj.Status</td>
+                            <td>@obj.Reason</td>
+                            <td>@obj.DateCreated</td>
+                            <td>@obj.MethodOfPayment</td>
+                            <td>@obj.PayDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+<script>
+    const xValues = [];
+    const yValues = [];
+    const barColors = ['green', 'red', 'yellow'];
+    $(".PieChart").children().each(
+        function () {
+            xValues.push($(this).text());
+            yValues.push($(this).attr("data-value"));
+        }
+    );
+    new Chart("volunteersChart", {
+        type: 'pie',
+        data: {
+            labels : xValues,
+            datasets : [{
+                backgroundColor : barColors,
+                data : yValues
+            }]
+        },
+        options: {
+            title : {
+                display : true,
+                text: "Volunteers"
+            }
+        }
+    });
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

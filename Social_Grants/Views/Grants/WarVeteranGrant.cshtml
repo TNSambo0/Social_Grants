@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "War Veteran Grant";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">War Veteran Grant</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The applicant must be a South African citizen / permanent resident.</li>
+            <li>The applicant must be a resident in South Africa.</li>
+            <li>The applicant must be 60 years and over or must be disabled.</li>
+            <li>The applicant must have fought in the Second World War or the Korean War.</li>
+            <li>The applicant and spouse must meet the requirements of the means test.</li>
+            <li>The applicant must not be maintained or cared for in a State Institution.</li>
+            <li>The applicant must not be in receipt of another social grant in respect of himself or herself.</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="WarVeteranGrantForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

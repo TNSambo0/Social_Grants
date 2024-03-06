@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Old Age Grant";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">Old Age Grant</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The applicant must be a South African citizen, permanent resident or refugee.</li>
+            <li>Must not be less than 60 years.</li>
+            <li>The applicant must not be in receipt of another social grant for him or herself.</li>
+            <li>The applicant and spouse must comply with the means test.</li>
+            <li>The applicant must not be maintained or cared for in a State Institution.</li>
+            <li>The applicant must submit a 13 digit bar coded identity document.</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="OldAgeGrantForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

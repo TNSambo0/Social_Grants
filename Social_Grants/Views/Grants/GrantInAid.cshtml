@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Grant-In-Aid";
+}
+<div class="container p-3 mt-4">
+    <div>
+        <h2 class="text-primary">Grant-In-Aid</h2>
+        <hr />
+    </div>
+    <div class="mt-4">
+        <h3>Applicant must meet the following requirements:</h3>
+        <ul>
+            <li>The applicant must be in receipt of a grant for Older Persons.</li>
+            <li>Disability grant or a War Veteran's grant, and require full- time attendance by another person.</li>
+            <li>Owing to his/her physical or mental disabilities.</li>
+            <li>Must not be cared for in an institution that receives subsidy from the State for the care/housing of such beneficiary.</li>
+        </ul>
+    </div>
+    <div class="btn-group mt-3">
+        <a class="btn btn-primary" asp-controller="Grants" asp-action="GrantInAidForm" style="width:150px">Apply</a>
+        <a asp-controller="Home" asp-action="SocialGrants" class="btn btn-secondary ms-2" style="width:150px">Back</a>
+    </div>
+</div>

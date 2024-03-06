@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/images/logo.svg" type="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/style.css"/>
+    <link rel="stylesheet" href="~/fontAwesomeIcons/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Admin/icon/themify-icons/themify-icons.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/Admin/icon/icofont/css/icofont.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Social_Grants.styles.css" asp-append-version="true" />
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        $(function () {
+            var url = window.location.href;
+            $("#navbarSupportedContent a").each(function () {
+                if (url == (this.href)) {
+                    $(this).closest("li").addClass("active");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom_nav-container bg-primary p-2 px-5">
+            <a asp-action="Index" asp-controller="Home">
+                <div class="d-flex justify-content-space-between align-items-center">
+                    <img class="logo" src="~/images/logo.svg" alt="logo" />
+                    <div class="d-flex flex-column Slogan">
+                        <span class="logo-Abv">SASSA</span>
+                        <span class="logo-text"> SOUTH AFRICAN SOCIAL SECURITY AGENCY </span>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item-nav" id="Home">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="nav-item-nav dropdown-nav" id="About">
+                        <a class="nav-link dropdownbtn" asp-action="About" asp-controller="Home">About</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="" asp-action="About" asp-controller="Home">Vision & Mission</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="Contact" asp-controller="Home">Contact us</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-nav dropdown-nav" id="Grants">
+                        <a class="nav-link dropdownbtn" asp-action="SocialGrants" asp-controller="Home">Grants</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="" asp-action="CareDependencyGrant" asp-controller="Grants">CareDependencyGrant</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="ChildSupport" asp-controller="Grants">ChildSupport</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="DisabilityGrant" asp-controller="Grants">DisabilityGrant</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="FosterGrant" asp-controller="Grants">FosterGrant</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="GrantInAidForm" asp-controller="Grants">GrantInAidForm</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="OldAgeGrantForm" asp-controller="Grants">OldAgeGrantForm</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="SocialReliefDistressGrant" asp-controller="Grants">SocialReliefDistressGrant</a>
+                            </li>
+                            <li>
+                                <a class="" asp-action="WarVeteranGrant" asp-controller="Grants">WarVeteranGrant</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item-nav" id="CheckStatus">
+                        <a class="nav-link" asp-action="CheckStatus" asp-controller="Grants">Check Status</a>
+                    </li>
+                    <partial name="_LoginPartial" />
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container p-2">
+        <main role="main">
+            <Partial name="_NotificationsPartial" />
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="bg-footer">
+        <div class="container">
+            <div class="row">
+                <div class="logo_footer">
+                    <img width="70" class="rounded-circle" src="~/images/logo.svg" alt="Logo" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="full">
+                        <div class="information_f">
+                            <h3>Contact</h3>
+                            <p><strong>ADDRESS:</strong> <label class="text-white">28 White tower, DFC, Johannesburg, South Africa</label></p>
+                            <p><strong>TELEPHONE:</strong> <label class="text-white">+27 66 348 7693</label></p>
+                            <p>
+                                <strong>EMAIL: </strong>
+                                <a class="text-white" href="mailto:alittlesourceofhope@outlook.com">
+                                    alittlesourceofhope@outlook.com
+                                </a>
+                            </p>
+                            <p>
+                                <strong>WHATSAPP: </strong>
+
+                                <a class="text-white" href="https://wa.me/27738609513" target="_blank">+27 73 860 9513</a>
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="widget_menu">
+                        <h3>Menu</h3>
+                        <ul>
+                            <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                            <li><a asp-action="About" asp-controller="Home">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="cpy_">
+        <p class="mx-auto text-dark">
+            © @DateTime.Now.Year All Rights Reserved By SASSA
+        </p>
+    </div>
+    <script type="text/javascript" src="~/js/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/fontAwesomeIcons/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/Admin/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="~/css/Admin/icon/icofont/css/icofont.css">
+    <link rel="stylesheet" href="~/css/Login/style.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Social_Grants.styles.css" asp-append-version="true" />
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div class="my-5">
+        <main role="main">
+            <Partial name="_NotificationsPartial" />
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

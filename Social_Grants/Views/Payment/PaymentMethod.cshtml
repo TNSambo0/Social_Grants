@@ -1,0 +1,121 @@
+﻿@model PaymentMethod
+@{
+    ViewData["Title"] = "Payment Method";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<form method="post">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Payment method</h2>
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <label asp-for="SelectedPaymentMethodId"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <select asp-for="SelectedPaymentMethodId" asp-items="@Model.PaymentMethods" class="border-top-0 border-left-0 border-right-0 rounded-0 w-100 PaymentMethod">
+                    </select>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label class="text-danger error d-none"></label>
+                </div>
+            </div>
+            <div class="DIVBank d-none">
+                <h3 class="text-center mb-4">Bank Account Details</h3>
+                <input type="hidden" asp-for="BankDetails.Id" />
+                <input type="hidden" asp-for="BankDetails.AppUserId" />
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="BankDetails.BankName"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" asp-for="BankDetails.BankName" id="Bankname" class="border-top-0 border-left-0 border-right-0 rounded-0 BankName" />
+                        <span asp-validation-for="BankDetails.BankName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="BankDetails.BankAccountHolder"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input type="text" asp-for="BankDetails.BankAccountHolder" class="border-top-0 border-left-0 border-right-0 rounded-0 BankAccountHolder" />
+                        <span asp-validation-for="BankDetails.BankAccountHolder" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="BankDetails.AccountNumber"></label>
+                    </div><div class="col-sm-9 text-secondary">
+                        <input type="text" asp-for="BankDetails.AccountNumber" class="border-top-0 border-left-0 border-right-0 rounded-0 AccountNumber" />
+                        <span asp-validation-for="BankDetails.AccountNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="BankDetails.BranchCode"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <input asp-for="BankDetails.BranchCode" type="text" class="border-top-0 border-left-0 border-right-0 rounded-0 BranchCode" />
+                        <span asp-validation-for="BankDetails.BranchCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="offset-3 col-sm-9 text-secondary">
+                        <p>
+                            <strong class="text-danger">Note:</strong> Please make sure you enter the correct bank account information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="DIVPostOffice d-none">
+                <h3 class="text-center mb-4">Post Office Details</h3>
+                <input type="hidden" asp-for="ChosenPostOffice.Id" />
+                <input type="hidden" asp-for="ChosenPostOffice.AppUserId" />
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="ChosenPostOffice.ProvinceId"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="border-top-0 border-left-0 border-right-0 rounded-0 POProvince" asp-for="ChosenPostOffice.ProvinceId" asp-items="@Model.ChosenPostOffice.Provinces">
+                            <option value="0">Select an option</option>
+                        </select>
+                        <span asp-validation-for="ChosenPostOffice.ProvinceId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-sm-3">
+                        <label asp-for="ChosenPostOffice.CityId"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="border-top-0 border-left-0 border-right-0 rounded-0 POArea" asp-for="ChosenPostOffice.CityId" asp-items="@Model.ChosenPostOffice.Cities">
+                            <option value="0">Select an option</option>
+                        </select>
+                        <span asp-validation-for="ChosenPostOffice.CityId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label asp-for="ChosenPostOffice.PostOfficeId"></label>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <select class="border-top-0 border-left-0 border-right-0 rounded-0 POSite" asp-for="ChosenPostOffice.PostOfficeId" asp-items="@Model.ChosenPostOffice.PostOffices">
+                            <option value="0">Select an option</option>
+                        </select>
+                        <span asp-validation-for="ChosenPostOffice.PostOfficeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="offset-3 col-sm-9 text-secondary">
+                        <p>
+                            <strong class="text-danger">Note:</strong> Please make sure you select the correct information of your nearest Post Office.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="offset-3 col-sm-9 text-end">
+                    <button type="button" class="btn btn-primary PaymentFormChecker" style="width:150px">Submit</button>
+                    <button type="submit" class="Btn-Submit d-none"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

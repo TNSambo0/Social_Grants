@@ -1,0 +1,92 @@
+﻿@using Social_Grants.Models.Grant
+@model DisabilityGrant
+@{
+    ViewData["Title"] = "Disability grant form";
+    Layout = "~/Views/Shared/_GrantsLayout.cshtml";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="card p-3">
+        <div class="card-body">
+            <h3 class="d-flex align-items-center mb-3 justify-content-center"><i class="material-icons text-info mr-2"></i>Disability grant form</h3><hr>
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <label asp-for="ForWhoId"></label>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <select asp-for="ForWhoId" class="border-top-0 border-left-0 border-right-0 rounded-0 w-50 ForWho" asp-items="Model.ForWho">
+                        <option value="0">Select an option</option>
+                    </select>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label class="text-danger error d-none"></label>
+                </div>
+            </div>
+            <label class="dependents_count  d-none">@Model.DependentsCount</label>
+            <div class="applicant_details">
+                <div class="dependent_details">
+                    <h3 class="my-3 text-decoration-underline">Dependent details</h3>
+                    <div class="fs-5 mb-3 dependent_Create_router">
+                        <label>You first need to create or provide dependent details before you can to apply for the grant. Click <a asp-controller="Dependent" asp-action="Create">here</a> to create one.</label>
+                    </div>
+                    <div class="sub_dependent_details row align-items-center">
+                        <div class="col-sm-3">
+                            <label asp-for="DependentId"></label>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <select asp-for="DependentId" asp-items="Model.ListOfDependers" class="border-top-0 border-left-0 border-right-0 rounded-0 w-50">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="dependent_questions d-none">
+                    <h3 class="d-flex align-items-center justify-content-center mb-3 mt-3"><i class="material-icons text-info mr-2"></i>Answer the following questions</h3>
+                    <div class="row align-items-center">
+                        <div class="col-sm-3">
+                            <label asp-for="CaredByState"></label>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input class="border-top-0 border-left-0 border-right-0 rounded-0 CaredByState" asp-for="CaredByState" />
+                            <span class="text-danger" asp-validation-for="CaredByState"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-sm-3">
+                            <label asp-for="OtherGrant"></label>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input class="border-top-0 border-left-0 border-right-0 rounded-0 OtherGrant" asp-for="OtherGrant" />
+                            <span class="text-danger" asp-validation-for="OtherGrant"></span>
+                        </div>
+                    </div>
+                    <h3 class="d-flex align-items-center justify-content-center mb-3 mt-3"><i class="material-icons text-info mr-2"></i>Upload the following supporting documents</h3>
+                    <div class="row align-items-center FileUploadMedicalReport">
+                        <div class="col-sm-3">
+                            <label asp-for="MedicalReport"></label>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input type="file" class="row m-0 border-0" asp-for="MedicalReport" multiple="false" accept="application/pdf" />
+                            <span class="text-danger row" asp-validation-for="MedicalReport"></span>
+                        </div>
+                    </div>
+                    <div class="row align-items-center FileUploadApplicationForm">
+                        <div class="col-sm-3">
+                            <label asp-for="ApplicationForm"></label>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <input type="file" class="row m-0 border-0" asp-for="ApplicationForm" multiple="false" accept="application/pdf" />
+                            <span class="text-danger row" asp-validation-for="ApplicationForm"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="offset-3 col-sm-9 text-end">
+                            <button id="BtnSubmit" type="submit" class="btn btn-primary" style="width:150px">Submit</button>
+                            <a asp-controller="Grants" asp-action="CareDependencyGrant" class="btn btn-secondary ms-2" style="width:150px">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

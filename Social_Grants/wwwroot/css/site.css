@@ -1,0 +1,45 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .border-top-0 border-left-0 border-right-0 rounded-0:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.logo {
+    margin-right: 16px;
+    height: 40px;
+    width: 40px;
+}
+.navbar a {
+    color: black;
+}
+.navbar a:hover {
+    text-decoration: none;
+}
+.Slogan{
+    font-weight:600;
+}
+.logo-Abv {
+    font-size: 25px;
+}
+
+.logo-text {
+    font-size: 8px;
+    line-height: 1px;
+    margin-left: 2px;
+}
+.btn-login {
+    width: 170px;
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Dependent>
+@{
+    ViewData["Title"] = "Dependents List";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+<div class="card mb-3 h-100">
+    <div class="card-body">
+        @if (ViewData["Dependents"] != null)
+        {
+            <h2 class="text-center mb-4 text-primary">List of dependents</h2>
+            <table class="table table-hover product-table">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.LastName)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.IDNumber)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Nationality)</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td class="product-name">@obj.FullName</td>
+                            <td>@obj.LastName</td>
+                            <td>@obj.IDNumber</td>
+                            <td>@obj.Nationality</td>
+                            <td>
+                                <a asp-controller="Dependent" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-warning">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="row mt-2">
+                <div class="colsm-12 text-center">
+                    <p>You have no registered dependents. Click <a asp-controller="Dependent" asp-action="Create">here</a> to create one.</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
