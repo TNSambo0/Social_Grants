@@ -10,8 +10,6 @@
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -52,6 +50,8 @@ This project is intended for educational and simulation purposes and is not an o
 4. Build the solution.
 5. Configure your SQL Server connection string in appsettings.json or the relevant configuration file.
 6. Run the application.
+
+---
 
 ## Usage
 1. Open the application in your browser.
